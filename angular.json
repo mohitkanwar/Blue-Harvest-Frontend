@@ -4,7 +4,7 @@
   "newProjectRoot": "projects",
   "projects": {
     "blue-harvest": {
-      "root": "./Blue-Harvest-Frontend",
+      "root": "",
       "sourceRoot": "src",
       "projectType": "application",
       "prefix": "app",
