@@ -26,8 +26,8 @@ export interface DialogData {
   entryComponents:[]
 })
 export class CustomersListComponent implements OnInit {
-  private customers : Customer[];
-  private columnsToDisplay: string[] = ['customerId','givenName','surname'];
+  customers : Customer[];
+  columnsToDisplay: string[] = ['customerId','givenName','surname'];
   private expandedCustomer: Customer;
   private showAccountsList:boolean = false;
   private accountDetailsLinkText:string = "show details";
