@@ -1,0 +1,6 @@
+.menuItem{
+    margin: 10px;
+}
+.active{
+   background-color:  #f5f5f5;
+}
