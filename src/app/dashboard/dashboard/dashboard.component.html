@@ -1,6 +1,131 @@
+<div class="body">
 
 
-<p>Hi Admin</p>
-<h3> Welcome to Blue Harvest Bank's Administrative Portal</h3>
-<app-environment-settings></app-environment-settings>
 
+  <p>Hi Admin</p>
+  <h3> Welcome to Blue Harvest Bank's Administrative Portal</h3>
+  <p>
+    This application consists of two code bases
+
+  </p>
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <h4> Back-End Application</h4>
+        </mat-panel-title>
+        <mat-panel-description>
+          Written using Java, Spring-Boot, Maven and other niche technologies
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p>
+        Backend application has been developed using <b>Spring-Boot Framework (2.0.6.RELEASE)</b>. The minimum Java
+        version required is<strong> 1.9 </strong>.
+        It has been tested on Windows 10.
+
+        The application is build using Maven configuration, and hence all build related information can be found in
+        pom.xml
+      </p>
+      <table class="table">
+        <tr>
+          <th class="th">Code Location</th>
+          <td>The code is checked in to Github and can be downloaded from <a href="https://github.com/mohitkanwar/Blue-Harvest-Backend">this
+              link</a></td>
+        </tr>
+        <tr>
+          <th class="th">Minimum Requirements to run</th>
+          <td> Java 1.9<br /> Maven 3.5.4</td>
+        </tr>
+        <tr>
+          <th class="th">Test Environments</th>
+          <td> Maven 3.5.4<br />
+            Java version: 10.0.2, vendor: Oracle Corporation, <br />
+            Default locale: en_IN, platform encoding: Cp1252 <br />
+            OS name: "windows 10", version: "10.0", arch: "amd64", family: "windows"</td>
+        </tr>
+      </table>
+
+
+
+      <h5>
+        Deployment Instructions
+      </h5>
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Option 1
+            </mat-panel-title>
+            <mat-panel-description>
+              Build it on your own
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+
+          <mat-horizontal-stepper [linear]="false" #stepper>
+            <mat-step>
+              <ng-template matStepLabel>Get the Code</ng-template>
+              clone the project using following command<br />
+              <span class="terminalCode"><code>git clone https://github.com/mohitkanwar/Blue-Harvest-Backend</code></span>
+            </mat-step>
+            <mat-step>
+              <ng-template matStepLabel>Build It</ng-template>
+              Build the project using maven and the following command:
+              <span class="terminalCode"><code>mvn clean install</code></span>
+            </mat-step>
+            <mat-step>
+              <ng-template matStepLabel>Run it</ng-template>
+              Run the generated jar (as in Step 2 of Option 2), or use Spring-Boot to run the application
+              <span class="terminalCode"><code>mvn spring-boot:run</code></span>
+            </mat-step>
+          </mat-horizontal-stepper>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Option 2
+            </mat-panel-title>
+            <mat-panel-description>
+              Get the readymade version
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+
+          <mat-horizontal-stepper [linear]="false" #stepper>
+            <mat-step>
+              <ng-template matStepLabel>Get the Code</ng-template>
+              Download the jar directly from <a href="https://github.com/mohitkanwar/Blue-Harvest-Backend/blob/master/target/backend-assignment-1.0-RELEASE.jar">this
+                link</a>
+            </mat-step>
+
+            <mat-step>
+              <ng-template matStepLabel>Run it</ng-template>
+              Run the jar using following command
+              <span class="terminalCode"><code>java -jar backend-assignment-1.0-RELEASE.jar</code></span>
+            </mat-step>
+          </mat-horizontal-stepper>
+        </mat-expansion-panel>
+      </mat-accordion>
+
+    </mat-expansion-panel>
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Front-End Application
+        </mat-panel-title>
+        <mat-panel-description>
+          Written using Angular 6, Material, Typescript and other niche technologies
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p>I'm visible because I am open</p>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <ul>
+    <li>
+    </li>
+    <li><a href="https://github.com/mohitkanwar/Blue-Harvest-Frontend">Front-End Application</a></li>
+  </ul>
+
+
+</div>

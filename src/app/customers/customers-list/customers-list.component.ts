@@ -50,7 +50,7 @@ export class CustomersListComponent implements OnInit {
   error =>{
     console.log(error);
     console.log("an error has  been caught")
-    this.notificationService.sendNotification("An error has occurred!");
+    this.notificationService.sendNotification("An error has occurred during connecting the service!");
   })
   }
  toggleCustomer(customer:Customer){
