@@ -20,6 +20,8 @@ export class CustomersListComponent implements OnInit {
   private customers : Customer[];
   private columnsToDisplay: string[] = ['customerId','givenName','surname'];
   private expandedCustomer: Customer;
+  private showAccountsList:boolean = false;
+  private accountDetailsLinkText:string = "show details";
   constructor(private customerService:CustomersService,private notificationService:NotificationService) { }
 
   ngOnInit() {
@@ -47,6 +49,16 @@ export class CustomersListComponent implements OnInit {
    }
    else{
      this.expandedCustomer = customer;
+   }
+ }
+
+ toggleAccountDetails(){
+   this.showAccountsList = !this.showAccountsList;
+   if(this.showAccountsList){
+    this.accountDetailsLinkText = "hide details";
+   }
+   else{
+    this.accountDetailsLinkText = "show details";
    }
  }
 } 

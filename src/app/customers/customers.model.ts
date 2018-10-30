@@ -1,4 +1,4 @@
-import{Account} from './account.model';
+import{Account} from '../accounts/account.model';
 export class Customer {
     customerId :number;
     givenName:string;

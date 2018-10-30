@@ -1,0 +1,52 @@
+table {
+    width: 100%;
+  }
+  
+  tr.account-detail-row {
+    height: 0;
+  }
+  
+  tr.account-details-row:not(.customer-details-expanded-row):hover {
+    background: #f5f5f5;
+  }
+  
+  tr.account-details-row:not(.customer-details-expanded-row):active {
+    background: #efefef;
+  }
+  
+  .account-details-row td {
+    border-bottom-width: 0;
+  }
+  
+  .account-details {
+    overflow: hidden;
+    display: flex;
+  }
+  
+  .account-details-box {
+    min-width: 80px;
+    border: 2px solid black;
+    padding: 8px;
+    font-weight: lighter;
+    margin: 8px 0;
+    height: 104px;
+  }
+  
+  .account-details-id {
+    font-weight: bold;
+    font-size: 40px;
+    line-height: normal;
+  }
+  .account-details-id img {
+    width: 80px;
+  }
+  
+  .account-details-table{
+    min-width: 80px;
+    border: 2px solid lightgray;
+    padding: 8px;
+    font-weight: lighter;
+    margin: 8px 0;
+    height: 104px;
+  }
+ 

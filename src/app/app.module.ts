@@ -11,6 +11,7 @@ import { MatSnackBarModule } from '@angular/material';
 import { NotificationService } from './theme/notification/notification.service';
 import { CustomersModule } from './customers/customers.module';
 import { CustomersService } from './customers/customers.service';
+import { AccountsModule } from './accounts/accounts.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { CustomersService } from './customers/customers.service';
     DashboardModule,
     CustomersModule,
     HttpClientModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    AccountsModule
   ],
   providers: [CustomersService,NotificationService],
   bootstrap: [AppComponent]
