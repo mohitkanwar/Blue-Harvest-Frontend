@@ -12,10 +12,11 @@ import { NotificationService } from './theme/notification/notification.service';
 import { CustomersModule } from './customers/customers.module';
 import { CustomersService } from './customers/customers.service';
 import { AccountsModule } from './accounts/accounts.module';
+import { EnvironmentService } from './dashboard/environment-settings/environment.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,7 +29,7 @@ import { AccountsModule } from './accounts/accounts.module';
     MatSnackBarModule,
     AccountsModule
   ],
-  providers: [CustomersService,NotificationService],
+  providers: [CustomersService,NotificationService,EnvironmentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

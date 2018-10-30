@@ -50,7 +50,7 @@ export class CustomersListComponent implements OnInit {
   error =>{
     console.log(error);
     console.log("an error has  been caught")
-    this.notificationService.sendNotification("Kuch to hua hai");
+    this.notificationService.sendNotification("An error has occurred!");
   })
   }
  toggleCustomer(customer:Customer){
@@ -96,7 +96,7 @@ export class CustomersListComponent implements OnInit {
     error =>{
       console.log(error);
       console.log("an error has  been caught")
-      this.notificationService.sendNotification("Kuch to hua hai");
+      this.notificationService.sendNotification("An error has occurred!");
     })
     }
   });
