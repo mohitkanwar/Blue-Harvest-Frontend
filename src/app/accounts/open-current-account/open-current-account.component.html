@@ -1,0 +1,11 @@
+<div mat-dialog-content>
+  <p>Do you want a transaction to be initiated on the newly opened account?</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.initialAmount" type="number">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-stroked-button (click)="onNoClick()" class="cancelButton">Cancel</button>
+  <button mat-button mat-stroked-button [mat-dialog-close]="data.initialAmount" cdkFocusInitial (click)="onYesWithInitial()">Open an account with initial amount </button>
+  <button mat-button mat-stroked-button [mat-dialog-close]="data.initialAmount" (click)="onYesWithoutInitial()">Open an account with 0 balance</button>
+</div>

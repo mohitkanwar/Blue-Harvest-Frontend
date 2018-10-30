@@ -20,9 +20,9 @@
         <table class="customer-details-table">
           <tr class="customer-details-row"><th class="customer-details-header"><b>Firstname</b></th><td class="customer-details-details">{{customer.givenName}}</td></tr>
           <tr class="customer-details-row"><th class="customer-details-header"><b>Lastname</b></th><td class="customer-details-details">{{customer.surname}}</td></tr>
-          <tr class="customer-details-row"><th class="customer-details-header"><b>Number of Accounts</b></th><td class="customer-details-details">{{customer.accounts.length}} <button mat-raised-button	 (click)="toggleAccountDetails()" [color]="primary">{{accountDetailsLinkText}}</button></td></tr>
+          <tr class="customer-details-row"><th class="customer-details-header"><b>Number of Accounts</b></th><td class="customer-details-details">{{customer.accounts.length}} <button mat-raised-button	 (click)="toggleAccountDetails()" [color]="primary" ngClass="showDetailsButton" *ngIf="customer.accounts.length>0">{{accountDetailsLinkText}}</button></td></tr>
         </table>
-        
+        <button mat-stroked-button		 (click)="confirmAddAccount()" ngClass="addAccountButton" >Add Account</button>
 
       </div>
       <div class="customer-details"

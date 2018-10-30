@@ -1,4 +1,4 @@
-import { Transaction } from "../customers/transaction.model";
+import { Transaction } from "./transaction.model";
 
 export class Account{
     id :number;

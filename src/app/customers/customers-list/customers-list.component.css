@@ -49,4 +49,13 @@ table {
     margin: 8px 0;
     height: 104px;
   }
- 
+ .showDetailsButton{
+   margin-left: 10px;
+ }
+ .addAccountButton{
+  margin-left: 10px;
+  height: 120px;
+  min-width: 120px;
+  vertical-align: middle;
+  background-color: #d8d1d1;
+ }

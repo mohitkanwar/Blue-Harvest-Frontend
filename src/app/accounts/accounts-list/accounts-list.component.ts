@@ -20,7 +20,7 @@ export class AccountsListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.accounts.length+ " Accounts received")
+    console.log(this.accounts)
   }
 
 

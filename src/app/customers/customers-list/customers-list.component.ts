@@ -1,8 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { CustomersService } from '../customers.service';
 import { Customer } from '../customers.model';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import { NotificationService } from 'src/app/theme/notification/notification.service';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { OpenCurrentAccountComponent } from 'src/app/accounts/open-current-account/open-current-account.component';
+
+
+export interface DialogData {
+  initialAmount: number;
+  isCanceled:boolean;
+}
 
 @Component({
   selector: 'app-customers-list',
@@ -15,6 +23,7 @@ import { NotificationService } from 'src/app/theme/notification/notification.ser
       transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
     ]),
   ],
+  entryComponents:[]
 })
 export class CustomersListComponent implements OnInit {
   private customers : Customer[];
@@ -22,7 +31,8 @@ export class CustomersListComponent implements OnInit {
   private expandedCustomer: Customer;
   private showAccountsList:boolean = false;
   private accountDetailsLinkText:string = "show details";
-  constructor(private customerService:CustomersService,private notificationService:NotificationService) { }
+  private initialAmount:number;
+  constructor(private customerService:CustomersService,private notificationService:NotificationService,public dialog: MatDialog) { }
 
   ngOnInit() {
     this.customerService.getUsers()
@@ -60,6 +70,36 @@ export class CustomersListComponent implements OnInit {
    else{
     this.accountDetailsLinkText = "show details";
    }
+ }
+
+ confirmAddAccount(){
+  const dialogRef = this.dialog.open(OpenCurrentAccountComponent, {
+    width: '500px',
+    data: { initialAmount: this.initialAmount}
+  });
+  dialogRef.afterClosed().subscribe(result => {
+    if(result!=undefined){
+      console.log('Open account for '+this.expandedCustomer.customerId +' With initial amount'+result.initialAmount);
+      console.log(result);
+      this.customerService.openAccount(this.expandedCustomer.customerId,result.initialAmount).subscribe(response => {
+        console.log(response);
+        if(response.status==="SUCCESS"){
+          this.notificationService.sendNotification("Account Created Successfully!");
+          this.ngOnInit();
+        }
+        else{
+          //Throw error that customers cannot be found
+            this.notificationService.sendNotification("An Error Occurred during account opening!");
+          
+        }
+    },
+    error =>{
+      console.log(error);
+      console.log("an error has  been caught")
+      this.notificationService.sendNotification("Kuch to hua hai");
+    })
+    }
+  });
  }
 } 
 
