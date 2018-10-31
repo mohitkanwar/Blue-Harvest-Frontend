@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EnvironmentSettingsComponent } from './environment-settings/environment-settings.component';
 import { FormsModule } from '@angular/forms';
-import { MatFormFieldModule, MatInputModule, MatButtonModule, MatExpansionModule, MatTableModule, MatStepperModule } from '@angular/material';
+import { MatFormFieldModule, MatInputModule, MatButtonModule, MatExpansionModule, MatTableModule, MatStepperModule, MatIconModule } from '@angular/material';
 
 @NgModule({
   imports: [
@@ -14,7 +14,8 @@ import { MatFormFieldModule, MatInputModule, MatButtonModule, MatExpansionModule
     MatButtonModule,
     MatExpansionModule,
     MatTableModule,
-    MatStepperModule
+    MatStepperModule,
+    MatIconModule
     
   ],
   declarations: [DashboardComponent,EnvironmentSettingsComponent],

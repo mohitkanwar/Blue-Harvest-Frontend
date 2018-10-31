@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CustomersListComponent } from './customers-list/customers-list.component';
-import { MatTableModule, MatSnackBarModule, MatIconModule, MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import { MatTableModule, MatSnackBarModule, MatIconModule, MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatPaginatorModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ThemeModule } from '../theme/theme.module';
 import { AccountsModule } from '../accounts/accounts.module';
@@ -17,6 +17,7 @@ import { OpenCurrentAccountComponent } from '../accounts/open-current-account/op
     AccountsModule,
     MatButtonModule,
     MatDialogModule,
+    MatPaginatorModule
   ],
   declarations: [CustomersListComponent],
   exports:[

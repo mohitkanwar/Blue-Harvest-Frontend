@@ -3,7 +3,7 @@ import { CustomersService } from '../customers.service';
 import { Customer } from '../customers.model';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import { NotificationService } from 'src/app/theme/notification/notification.service';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, PageEvent} from '@angular/material';
 import { OpenCurrentAccountComponent } from 'src/app/accounts/open-current-account/open-current-account.component';
 
 
@@ -32,27 +32,42 @@ export class CustomersListComponent implements OnInit {
   private showAccountsList:boolean = false;
   private accountDetailsLinkText:string = "show details";
   private initialAmount:number;
+  totalNumberOfCustomers:number;
+  pageNumber:number;
+  pageSize:number;
+  pageEvent: PageEvent;
   constructor(private customerService:CustomersService,private notificationService:NotificationService,public dialog: MatDialog) { }
 
   ngOnInit() {
-    this.customerService.getUsers()
-    .subscribe(response => {
-      console.log(response);
-      if(response.status==="SUCCESS"){
-          this.customers = response.dataList;
-      }
-      else{
-        //Throw error that customers cannot be found
-          this.notificationService.sendNotification("Failure");
-        
-      }
-  },
-  error =>{
-    console.log(error);
-    console.log("an error has  been caught")
-    this.notificationService.sendNotification("An error has occurred during connecting the service!");
-  })
+    this.pageNumber = 0;
+    this.pageSize = 5;
+    let localPageEvent:PageEvent = new PageEvent();
+    localPageEvent.pageIndex=0;
+    localPageEvent.pageSize = 5;
+    this.getPaginatedCustomers(localPageEvent);
   }
+   getPaginatedCustomers(pageEvent:PageEvent) :PageEvent{
+    this.customerService.getUsers(pageEvent.pageIndex, pageEvent.pageSize)
+      .subscribe(response => {
+        console.log(response);
+        if (response.status === "SUCCESS") {
+          this.customers = response.dataList;
+          this.totalNumberOfCustomers = response.totalCount;
+          this.pageNumber = response.pageNumber;
+          this.pageSize = response.pageSize;
+        }
+        else {
+          //Throw error that customers cannot be found
+          this.notificationService.sendNotification("Failure");
+        }
+      }, error => {
+        console.log(error);
+        console.log("an error has  been caught");
+        this.notificationService.sendNotification("An error has occurred during connecting the service!");
+      });
+      return pageEvent;
+  }
+
  toggleCustomer(customer:Customer){
    if(this.expandedCustomer==customer){
      this.expandedCustomer = null;

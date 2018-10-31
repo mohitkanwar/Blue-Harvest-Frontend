@@ -1,6 +1,8 @@
 export class ListResponse {
     dataList;
     error;
-    size: number;
+    totalCount: number;
     status: string;
+    pageNumber:number;
+    pageSize:number;
 }

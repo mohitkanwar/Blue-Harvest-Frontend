@@ -23,8 +23,8 @@
             <th mat-header-cell > Amount </th>
             <th mat-header-cell > Date </th>
           </tr>
-          <tr *ngFor="let transaction of account.transactions">
-            <td mat-cell > {{transaction.id}} </td>
+          <tr *ngFor="let transaction of account.transactions;let i = index">
+            <td mat-cell > {{i+1}} </td>
             <td mat-cell > {{transaction.id}} </td>
             <td mat-cell > {{transaction.amount}} </td>
             <td mat-cell > {{transaction.createDate}} </td>

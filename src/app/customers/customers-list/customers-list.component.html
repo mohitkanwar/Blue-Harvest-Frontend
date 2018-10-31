@@ -40,3 +40,9 @@
   </tr>
   <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="user-detail-row"></tr>
 </table>
+<mat-paginator [length]="totalNumberOfCustomers"
+              [pageSize]="pageSize"
+              [pageIndex]="pageNumber"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              (page)="pageEvent =  getPaginatedCustomers($event)">
+</mat-paginator>

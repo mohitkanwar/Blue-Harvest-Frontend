@@ -1,20 +1,22 @@
-<div class="body">
+
 
 
 
   <p>Hi Admin</p>
   <h3> Welcome to Blue Harvest Bank's Administrative Portal</h3>
-  <p>
-    This application consists of two code bases
 
-  </p>
-  <mat-accordion>
+  <h3>Introduction to Code Base</h3>
+  <p>
+      This application consists of two code bases, Back-End and Front-End Applications. Also, few settings are required to integrate both of them.
+  
+    </p>
+  <mat-accordion class="mainAccordian">
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
-          <h4> Back-End Application</h4>
+          <h4 class="panelHeading"> Back-End Application</h4>
         </mat-panel-title>
-        <mat-panel-description>
+        <mat-panel-description class="panelDescription">
           Written using Java, Spring-Boot, Maven and other niche technologies
         </mat-panel-description>
       </mat-expansion-panel-header>
@@ -106,26 +108,181 @@
           </mat-horizontal-stepper>
         </mat-expansion-panel>
       </mat-accordion>
+      <h5>Usage Instructions</h5>
+      <p>
+          By default the application runs on <a href="http://localhost:8080/">http://localhost:8080/</a> . To change port number, add following code to application.properties
+          <span class="terminalCode"><code>server.port=[your preferred port]</code></span>
+
+          Important APIs exposed by Backend Application :
+          
+      </p>
+      <ol>
+          <li> <a href="http://localhost:8080/swagger-ui.html">Swagger UI</a></li>
+          <li> Get Customer List </li>
+          <li> Open Current Account</li>
+        </ol>
+      
 
     </mat-expansion-panel>
     <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          Front-End Application
+          <h4 class="panelHeading">Front-End Application</h4>
         </mat-panel-title>
-        <mat-panel-description>
+        <mat-panel-description class="panelDescription">
           Written using Angular 6, Material, Typescript and other niche technologies
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <p>I'm visible because I am open</p>
+      <p>Front-End application has been developed using Angular 6, utilizing the power of angular-cli. The components are created in typescript. 
+        Angular Material is used to take advantage of some already build components. The styling is done in CSS.
+      </p>
+
+      <table class="table">
+          <tr>
+            <th class="th">Code Location</th>
+            <td>The code is checked in to Github and can be downloaded from <a href="https://github.com/mohitkanwar/Blue-Harvest-Frontend">this
+                link</a></td>
+          </tr>
+          <tr>
+            <th class="th">Minimum Requirements to run</th>
+            <td> Chrome 69</td>
+          </tr>
+          <tr>
+            <th class="th">Test Environments</th>
+            <td>
+              Angular CLI: 6.2.4<br/>
+                Node: 8.11.3<br/>
+                OS: win32 x64<br/>
+                </td>
+          </tr>
+        </table>
+
+        <h5>
+            Deployment Instructions
+          </h5>
+          <mat-accordion>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Option 1
+                </mat-panel-title>
+                <mat-panel-description>
+                  Build it on your own
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+    
+    
+              <mat-horizontal-stepper [linear]="false" #stepper>
+                <mat-step>
+                  <ng-template matStepLabel>Get the Code</ng-template>
+                  clone the project using following command<br />
+                  <span class="terminalCode"><code>git clone https://github.com/mohitkanwar/Blue-Harvest-Frontend</code></span>
+                </mat-step>
+                <mat-step>
+                  <ng-template matStepLabel>Build It</ng-template>
+                  Build the project using ng cli and the following command:
+                  <span class="terminalCode"><code>ng build</code></span>
+                </mat-step>
+                <mat-step>
+                  <ng-template matStepLabel>Run it</ng-template>
+                  Run the generated angular application
+                  <span class="terminalCode"><code>ng serve</code></span>
+                </mat-step>
+              </mat-horizontal-stepper>
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Option 2
+                </mat-panel-title>
+                <mat-panel-description>
+                  Get the readymade version
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+    
+    
+              <mat-horizontal-stepper [linear]="false" #stepper>
+                <mat-step>
+                  <ng-template matStepLabel>Use the deployed application</ng-template>
+                  Use the application deployed on github pages at  <a href="https://mohitkanwar.github.io/Blue-Harvest-Frontend/index">this
+                    link</a>
+                  </mat-step>
+              </mat-horizontal-stepper>
+            </mat-expansion-panel>
+          </mat-accordion>
     </mat-expansion-panel>
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <h4 class="panelHeading">Integration</h4>
+          </mat-panel-title>
+          <mat-panel-description class="panelDescription">
+            Communication between Front-End and Back-End Applications
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>
+          The communication between Front-End and Back-End applications happen over REST APIs. At present all the apis are JSON based.
+        </p>
+        <h5>Configuring Front-End to consume Backend APIs</h5>
+        <p>To configure backend path in front-end application, a component has been created (to ease out testing, not recommended for production). <br/>
+        For production, the application should use environments file provided by Angular. </p>
+        <ol>
+          <li>Go to     <a routerLink="/settings" routerLinkActive="active" class="menuItem"><button   mat-button mat-flat-button><mat-icon>settings</mat-icon><span>Settings</span></button></a>
+         in top bar. </li>
+          <li>Add the server path in the input</li>
+          <li>Click on update</li>
+          <li>A notification on top right corner, confirms the update</li>
+        </ol>
+        <img src="/assets/images/front-end/settings.png" alt="example diagram" />
+
+        <h5>Configuring Back-End to consume requests from Front-End</h5>
+        <p>Due to CORS security implementation by all modern browsers, backend application must explicitely allow the origins of requests. <br/>
+        This configuration is done in a java class <i>com.mk.blueharvest.backendassignment.<b>SimpleCORSFilter</b></i>
+        At present following origins are allowed
+        </p>
+        <ul>
+          <li>https://mohitkanwar.github.io</li>
+          <li>http://localhost:4200</li>
+        </ul>
+        <p>
+          Which means if your Front-End application is running on some other origin, the Back-End application must be made aware of it by re-building the application.
+          This can also be made configurable if required, by persisting this information in a DB.
+        </p>
+      </mat-expansion-panel>
   </mat-accordion>
 
-  <ul>
-    <li>
-    </li>
-    <li><a href="https://github.com/mohitkanwar/Blue-Harvest-Frontend">Front-End Application</a></li>
-  </ul>
 
 
-</div>
+
+<h3>Architecture</h3>
+<h4>Back-End Application - APIs</h4>
+<p>
+  The application has Two entry points exposed as of now :-
+</p>
+<ul>
+  <li>GET  /customer/list</li>
+  <li>POST /customer/account/current</li>
+</ul>
+<h5>GET /customer/list</h5>
+<p>
+  This API is exposed in <i>com.mk.blueharvest.backendassignment.customers.controllers.<b>CustomerController</b></i>. 
+  It returns a paginated list of all the customers in the system. It also eagerly loads any accounts linked to them and the transactions on those accounts.
+  To achieve pagination, two optional parameters are provided <i>pagenumber</i> and <i>pagesize</i>.
+</p>
+<h5>POST /customer/account/current</h5>
+<p>
+  This API is exposed in <i>com.mk.blueharvest.backendassignment.customers.controllers.<b>CustomerAccountsController</b></i>. 
+  The request body needs to be a json accepting <i>customerId</i> of the customer for whom a current account needs to be opened.
+  It also needs <i>initialCredit</i>. If initialCredit is not 0, a transaction with the given amount is created and added to the account.
+</p>
+
+<h4>Business Models</h4>
+<p>
+  The application has three main business models.
+</p>
+<ul>
+  <li>Customer</li>
+  <li>Account</li>
+  <li>Transaction</li>
+</ul>
+<p></p>

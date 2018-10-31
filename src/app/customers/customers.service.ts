@@ -8,8 +8,8 @@ import { EnvironmentService } from "../dashboard/environment-settings/environmen
 export class CustomersService {
     constructor(private http: HttpClient,private environmentService:EnvironmentService) {}
 
-    getUsers() :Observable<ListResponse>{
-       return this.http.get<ListResponse>(this.environmentService.getCustomersListAPI());
+    getUsers(pageNumber,pageSize) :Observable<ListResponse>{
+       return this.http.get<ListResponse>(this.environmentService.getCustomersListAPI(pageNumber,pageSize));
     }  
     
     openAccount(custID,initialAmount) :Observable<ListResponse>{
